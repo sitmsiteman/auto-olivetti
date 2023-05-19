@@ -7,7 +7,7 @@
 ;; Version: 0.0.1
 ;; Package-Requires: ((olivetti "2.0"))
 ;; SPDX-License-Identifier: MIT
-;; Homepage: TODO
+;; Homepage: https://sr.ht/~ashton314/auto-olivetti
 ;; Keywords: olivetti, writing
 
 ;;; Commentary:

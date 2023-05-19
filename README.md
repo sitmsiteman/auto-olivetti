@@ -2,6 +2,8 @@
 
 Automatically enable `olivetti-mode` when the window is wide
 
+Source: https://sr.ht/~ashton314/auto-olivetti/
+
 # Description
 
 [Olivetti](https://github.com/rnkn/olivetti) is a wonderful mode. So wonderful,

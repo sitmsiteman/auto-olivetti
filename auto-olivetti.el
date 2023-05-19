@@ -15,8 +15,10 @@
 ;; Olivetti is a wonderful mode. So wonderful, in fact, that I wish it came on
 ;; automatically. This package does just that.
 
+;;; Code:
+
 (defgroup auto-olivetti nil
-  "Automatically enable olivetti-mode when window is wide"
+  "Automatically enable `olivetti-mode' when window is wide."
   :link '(url-link :tag "Homepage" "FIXME")
   :prefix "auto-olivetti-")
 
@@ -39,7 +41,7 @@
   :type '(choice (const fraction) (const absolute)))
 
 (defun auto-olivetti--do-change ()
-  "Turns on or off `olivetti-mode' depending on the current window configuration."
+  "Turn on or off `olivetti-mode' depending on the current window configuration."
   (if (and auto-olivetti-mode
            (apply #'derived-mode-p auto-olivetti-enabled-modes)
            (> (window-total-width)
@@ -51,10 +53,11 @@
 
 ;;;###autoload
 (define-minor-mode auto-olivetti-mode
-  "Automatically enable olivetti-mode"
+  "Automatically enable `olivetti-mode'."
   :global t :group 'auto-olivetti
   (if auto-olivetti-mode
       (add-hook 'window-configuration-change-hook 'auto-olivetti--do-change)
     (remove-hook 'window-configuration-change-hook 'auto-olivetti--do-change)))
 
 (provide 'auto-olivetti)
+;;; auto-olivetti.el ends here

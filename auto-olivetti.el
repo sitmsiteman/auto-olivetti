@@ -41,7 +41,7 @@
   :type '(choice (const fraction) (const absolute)))
 
 (defvar-local auto-olivetti--vlm-active nil
-  "Old value of `visual-line-mode' upon entering a mode")
+  "Old value of `visual-line-mode' upon entering a mode.")
 
 (defun auto-olivetti--do-change ()
   "Turn on or off `olivetti-mode' depending on the current window configuration."
@@ -54,16 +54,15 @@
                   (* olivetti-body-width auto-olivetti-threshold-fraction)
                 auto-olivetti-threshold-absolute)))
       (progn
-        (message (format "enable; vlm: %s; olive--vlm: %s; old: %s"
-                         visual-line-mode olivetti--visual-line-mode auto-olivetti--vlm-active))
+        ;; (message (format "enable; vlm: %s; olive--vlm: %s; old: %s"
+        ;;                  visual-line-mode olivetti--visual-line-mode auto-olivetti--vlm-active))
         (olivetti-mode +1))
     (progn
-      (message (format "disable; vlm: %s; olive--vlm: %s; old: %s"
-                       visual-line-mode olivetti--visual-line-mode (if (boundp 'auto-olivetti--vlm-active) t nil)))
+      ;; (message (format "disable; vlm: %s; olive--vlm: %s; old: %s"
+      ;;                  visual-line-mode olivetti--visual-line-mode (if (boundp 'auto-olivetti--vlm-active) t nil)))
       (olivetti-mode -1)
       (when (bound-and-true-p auto-olivetti--vlm-active)
-          (visual-line-mode))
-      )))
+        (visual-line-mode)))))
 
 ;;;###autoload
 (define-minor-mode auto-olivetti-mode

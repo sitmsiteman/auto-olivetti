@@ -1,4 +1,4 @@
-;;; auto-olivetti.el --- Automatically enable olivetti-mode when window is wide -*- lexical-binding: t -*-
+;;; auto-olivetti.el --- Automatically enable olivetti-mode in wide windows -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2023 Ashton Wiersdorf
 
@@ -10,15 +10,26 @@
 ;; Homepage: https://sr.ht/~ashton314/auto-olivetti
 ;; Keywords: olivetti, writing
 
+;; This program is free software: you can redistribute it and/or modify it under
+;; the terms of the MIT license.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
 ;;; Commentary:
 
-;; Olivetti is a wonderful mode. So wonderful, in fact, that I wish it came on
-;; automatically. This package does just that.
+;; Olivetti is a minor mode that adjusts the window margins to center the text
+;; for a more pleasant writing experience. This package makes `olivetti-mode'
+;; turn on automatically when the window goes beyond a particular width.
 
 ;;; Code:
 
+(eval-when-compile
+  (require 'olivetti))
+
 (defgroup auto-olivetti nil
-  "Automatically enable `olivetti-mode' when window is wide."
+  "Automatically enable `olivetti-mode' in wide windows."
   :link '(url-link :tag "Homepage" "https://sr.ht/~ashton314/auto-olivetti")
   :prefix "auto-olivetti-")
 
@@ -32,7 +43,7 @@
 
 (defcustom auto-olivetti-threshold-absolute 180
   "Number of columns at which to enable `olivetti-mode'."
-  :type 'integer)
+  :type 'natnum)
 
 (defcustom auto-olivetti-threshold-method 'fraction
   "How to determine if the activation threshold has been met.
@@ -41,7 +52,7 @@
   :type '(choice (const fraction) (const absolute)))
 
 (defvar-local auto-olivetti--vlm-active nil
-  "Old value of `visual-line-mode' upon entering a mode.")
+  "Old value of `visual-line-mode' in current buffer.")
 
 (defun auto-olivetti--do-change ()
   "Turn on or off `olivetti-mode' depending on the current window configuration."
@@ -55,17 +66,21 @@
                 auto-olivetti-threshold-absolute)))
       (olivetti-mode +1)
     (prog1
-      (olivetti-mode -1)
+        (olivetti-mode -1)
       (when (bound-and-true-p auto-olivetti--vlm-active)
         (visual-line-mode)))))
 
 ;;;###autoload
 (define-minor-mode auto-olivetti-mode
-  "Automatically enable `olivetti-mode'."
+  "Automatically enable `olivetti-mode' in wide windows."
   :global t :group 'auto-olivetti
   (if auto-olivetti-mode
       (add-hook 'window-configuration-change-hook 'auto-olivetti--do-change)
-    (remove-hook 'window-configuration-change-hook 'auto-olivetti--do-change)))
+    (prog2
+        (remove-hook 'window-configuration-change-hook 'auto-olivetti--do-change)
+        (olivetti-mode -1)
+      (when (bound-and-true-p auto-olivetti--vlm-active)
+        (visual-line-mode)))))
 
 (provide 'auto-olivetti)
 ;;; auto-olivetti.el ends here

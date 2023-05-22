@@ -4,7 +4,7 @@
 
 ;; Author: Ashton Wiersdorf <mail@wiersdorf.dev>
 ;; Created: 2023
-;; Version: 0.0.1
+;; Version: 0.0.2
 ;; Package-Requires: ((olivetti "2.0"))
 ;; SPDX-License-Identifier: MIT
 ;; Homepage: https://sr.ht/~ashton314/auto-olivetti
@@ -65,8 +65,8 @@
                   (* (or olivetti-body-width 80) auto-olivetti-threshold-fraction)
                 auto-olivetti-threshold-absolute)))
       (olivetti-mode +1)
-    (prog1
-        (olivetti-mode -1)
+    (when olivetti-mode
+      (olivetti-mode -1)
       (when (bound-and-true-p auto-olivetti--vlm-active)
         (visual-line-mode)))))
 

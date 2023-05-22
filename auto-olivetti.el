@@ -25,8 +25,7 @@
 
 ;;; Code:
 
-(eval-when-compile
-  (require 'olivetti))
+(require 'olivetti)
 
 (defgroup auto-olivetti nil
   "Automatically enable `olivetti-mode' in wide windows."

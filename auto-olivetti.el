@@ -19,14 +19,14 @@
 
 (defgroup auto-olivetti nil
   "Automatically enable `olivetti-mode' when window is wide."
-  :link '(url-link :tag "Homepage" "FIXME")
+  :link '(url-link :tag "Homepage" "https://sr.ht/~ashton314/auto-olivetti")
   :prefix "auto-olivetti-")
 
 (defcustom auto-olivetti-enabled-modes '(prog-mode text-mode)
   "Modes for which `olivetti-mode' should automatically be enabled for."
   :type '(repeat symbol))
 
-(defcustom auto-olivetti-threshold-fraction 1.5
+(defcustom auto-olivetti-threshold-fraction 1.3
   "Fraction of `olivetti-body-width' at which to enable `olivetti-mode'."
   :type 'float)
 
@@ -53,13 +53,8 @@
               (if (eq auto-olivetti-threshold-method 'fraction)
                   (* olivetti-body-width auto-olivetti-threshold-fraction)
                 auto-olivetti-threshold-absolute)))
-      (progn
-        ;; (message (format "enable; vlm: %s; olive--vlm: %s; old: %s"
-        ;;                  visual-line-mode olivetti--visual-line-mode auto-olivetti--vlm-active))
-        (olivetti-mode +1))
-    (progn
-      ;; (message (format "disable; vlm: %s; olive--vlm: %s; old: %s"
-      ;;                  visual-line-mode olivetti--visual-line-mode (if (boundp 'auto-olivetti--vlm-active) t nil)))
+      (olivetti-mode +1)
+    (prog1
       (olivetti-mode -1)
       (when (bound-and-true-p auto-olivetti--vlm-active)
         (visual-line-mode)))))

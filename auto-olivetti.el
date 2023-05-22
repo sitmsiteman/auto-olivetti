@@ -31,6 +31,7 @@
 (defgroup auto-olivetti nil
   "Automatically enable `olivetti-mode' in wide windows."
   :link '(url-link :tag "Homepage" "https://sr.ht/~ashton314/auto-olivetti")
+  :group 'text
   :prefix "auto-olivetti-")
 
 (defcustom auto-olivetti-enabled-modes '(prog-mode text-mode)

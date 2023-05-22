@@ -62,7 +62,7 @@
            (apply #'derived-mode-p auto-olivetti-enabled-modes)   ; in correct major-mode
            (> (window-total-width)                                ; window big enough?
               (if (eq auto-olivetti-threshold-method 'fraction)
-                  (* olivetti-body-width auto-olivetti-threshold-fraction)
+                  (* (or olivetti-body-width 80) auto-olivetti-threshold-fraction)
                 auto-olivetti-threshold-absolute)))
       (olivetti-mode +1)
     (prog1

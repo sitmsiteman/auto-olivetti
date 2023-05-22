@@ -58,7 +58,7 @@
   "Turn on or off `olivetti-mode' depending on the current window configuration."
   (setq-local auto-olivetti--vlm-active (or olivetti--visual-line-mode
                                             (and (not olivetti-mode) visual-line-mode)))
-  (if (and auto-olivetti-mode                                     ; mode enabled?
+  (if (and (bound-and-true-p auto-olivetti-mode)                  ; mode enabled?
            (apply #'derived-mode-p auto-olivetti-enabled-modes)   ; in correct major-mode
            (> (window-total-width)                                ; window big enough?
               (if (eq auto-olivetti-threshold-method 'fraction)

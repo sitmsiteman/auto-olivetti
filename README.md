@@ -6,9 +6,10 @@ Source: https://sr.ht/~ashton314/auto-olivetti/
 
 # Description
 
-[Olivetti](https://github.com/rnkn/olivetti) is a wonderful mode. So wonderful, in fact, that I wish it came on automatically. This package does just that.
+[Olivetti](https://github.com/rnkn/olivetti) is a wonderful mode. So wonderful,
+in fact, that I wish it came on automatically. This package does just that.
 
-This package looks at `auto-olivetti-enabled-modes` to determine whether or not `olivetti-mode` should be enabled. By default this is the list `(text-mode prog-mode)`, but you can easily customize that list to suit your needs.
+![auto-olivetti in acton](screenshots/vid.gif)
 
 # Installing
 
@@ -44,15 +45,6 @@ If you use `use-package` with [Elpaca](https://github.com/progfolio/elpaca), you
 
  - `auto-olivetti-threshold-method`
    Choose between the fractional and absolute methods.
-
-In addition to configuring `auto-olivetti` with the above listed variables, you will probably also want to set `olivetti-body-width`:
-
-```emacs-lisp
-(use-package auto-olivetti
-  :config
-  (setq-default olivetti-body-width 120)  ; set width for olivetti-mode
-  (auto-olivetti-mode))
-```
  
 # License
 

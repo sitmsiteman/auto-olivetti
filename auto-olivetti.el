@@ -4,7 +4,7 @@
 
 ;; Author: Ashton Wiersdorf <mail@wiersdorf.dev>
 ;; Created: 2023
-;; Version: 0.0.2
+;; Version: 1.0.0-rc
 ;; Package-Requires: ((emacs "24.3") (olivetti "2.0.0"))
 ;; SPDX-License-Identifier: MIT
 ;; Homepage: https://sr.ht/~ashton314/auto-olivetti

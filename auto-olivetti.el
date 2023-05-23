@@ -41,7 +41,7 @@
   "Fraction of `olivetti-body-width' at which to enable `olivetti-mode'."
   :type 'float)
 
-(defcustom auto-olivetti-threshold-absolute 180
+(defcustom auto-olivetti-threshold-absolute 150
   "Number of columns at which to enable `olivetti-mode'."
   :type 'natnum)
 

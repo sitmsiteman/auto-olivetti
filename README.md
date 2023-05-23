@@ -1,4 +1,4 @@
-# auto-olivetti
+# Auto-Olivetti
 
 Automatically enable `olivetti-mode` when the window is wide
 
@@ -31,9 +31,29 @@ If you use `use-package` with [Elpaca](https://github.com/progfolio/elpaca), you
 
 # Configuration
 
+It's a good idea to start by customizing the value of `olivetti-body-width`. Set this as part of your `olivetti` configuration or with `setq-default` like so:
+
+```emacs-lisp
+(use-package olivetti
+  :custom
+  (olivetti-body-width 130))
+
+;; OR
+
+(setq-default olivetti-body-width 130)
+
+(use-package auto-olivetti
+  :config
+  (auto-olivetti-mode))
+```
+
+(The `Customize` interface should work as well.)
+
+## Auto-Olivetti customization options
+
  - `auto-olivetti-enabled-modes`
  
-   List of modes for which to enable `olivetti-mode` automatically. Defaults to `'(prog-mode text-mode)`
+   List of modes for which to enable `olivetti-mode` automatically. Defaults to `'(text-mode)`. `'(text-mode prog-mode)` is pleasant.
 
  - `auto-olivetti-threshold-fraction`
    
@@ -46,6 +66,12 @@ If you use `use-package` with [Elpaca](https://github.com/progfolio/elpaca), you
  - `auto-olivetti-threshold-method`
    Choose between the fractional and absolute methods.
  
+# Alternatives
+
+ - [perfect-margin](https://github.com/mpwang/perfect-margin)
+
+   I used `perfect-margin` for a little while and liked it. I found it too aggressive though, and wanted something simpler and cleaner, which is why I built this package.
+
 # License
 
 MIT

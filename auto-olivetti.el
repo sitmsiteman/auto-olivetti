@@ -5,10 +5,10 @@
 ;; Author: Ashton Wiersdorf <mail@wiersdorf.dev>
 ;; Created: 2023
 ;; Version: 0.0.2
-;; Package-Requires: ((olivetti "2.0"))
+;; Package-Requires: ((emacs "24.3") (olivetti "2.0.0"))
 ;; SPDX-License-Identifier: MIT
 ;; Homepage: https://sr.ht/~ashton314/auto-olivetti
-;; Keywords: olivetti, writing
+;; Keywords: frames, wp
 
 ;; This program is free software: you can redistribute it and/or modify it under
 ;; the terms of the MIT license.
@@ -33,7 +33,7 @@
   :group 'text
   :prefix "auto-olivetti-")
 
-(defcustom auto-olivetti-enabled-modes '(prog-mode text-mode)
+(defcustom auto-olivetti-enabled-modes '(text-mode)
   "Modes for which `olivetti-mode' should automatically be enabled for."
   :type '(repeat symbol))
 
